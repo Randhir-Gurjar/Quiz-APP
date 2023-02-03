@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: 'segoe ui';
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+
+.nav1bar-toggler:hover {
+  background-color: rgb(187, 132, 21);
+  -webkit-transition: background-color 0.8s, color 0.8s;
+  transition: background-color 0.8s, color 0.8s;
+}
+
+
+
+.quiz-btn:hover {
+  background-color: rgb(126, 75, 197);
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.quiz-btn {
+  margin-top: 39px;
+  background-color: rgb(187, 132, 21);
+  color: white;
+  height: 41px;
+  width: 127px;
+  border-radius: 7px;
+  border: 1px;
+}
+
+
+.wipro-logo {
+  width: auto;
+  height: 40px;
+  padding-top: 7px;
+}
+
+
+
+.nav1 {
+  border-radius: 19px;
+  height: 50px;
+  width: 100%;
+  background-color: #f1f1e5;
+  position: relative;
+}
+
+.nav1>.nav1-header {
+  display: inline;
+}
+
+.nav1>.nav1-header>.nav1-title {
+  display: inline;
+  font-size: 22px;
+  color: #fff;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav1>.nav1-btn {
+  display: none;
+}
+
+.nav1>.nav1-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav1>.nav1-links>a {
+  display: inline-block;
+  padding: 13px 10px 13px 10px;
+  text-decoration: none;
+  color: #041142;
+}
+
+.nav1>.nav1-links>a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.nav1>#nav1-check {
+  display: none;
+}
+
+.nav1>.nav1-links>img {
+  display: none;
+}
+
+@media (max-width:600px) {
+  .nav1>.nav1-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+
+  .nav1>.nav1-links>img {
+    display: inline;
+  }
+
+  .nav1>.nav1-btn>label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+
+  .nav1>.nav1-btn>label:hover,
+  .nav1 #nav1-check:checked~.nav1-btn>label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .nav1>.nav1-links>a>img {
+    display: hidden;
+  }
+
+  .nav1>.nav1-btn>label>span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid rgb(54, 7, 77);
+  }
+
+  .nav1>.nav1-links {
+    z-index: 1;
+    text-align: center;
+    border-radius: 35px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: rgb(239, 244, 245);
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    right: 0px;
+  }
+
+  .nav1>.nav1-links>a {
+    display: block;
+    width: 100%;
+  }
+
+  .nav1>#nav1-check:not(:checked)~.nav1-links {
+    height: 0px;
+  }
+
+  .nav1>#nav1-check:checked~.nav1-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}

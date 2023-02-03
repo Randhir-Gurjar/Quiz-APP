@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login & Registration</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+
+</head>
+<style>
+  body {
+    display: inline-block;
+  }
+</style>
+
+<body>
+
+  <div class="nav1">
+    <input type="checkbox" id="nav1-check">
+    <div class="nav1-header">
+      <div class="nav1-title">
+        <img class="wipro-logo" src="static/Wipro-logo.png" alt="wipro-logo">
+      </div>
+    </div>
+    <div class="nav1-btn">
+      <label for="nav1-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav1-links">
+      <img src="/gcp_icon.svg" alt="gcp-icon">
+      <a href="/">Home</a>
+      <a href="./adminlogin">Admin Login</a>
+    </div>
+  </div>
+
+
+
+
+  <div class="cont" style="margin-left: 205px;margin-top: 23px; border-radius: 8px;">
+    <div class="form sign-in">
+      <h2>Sign In</h2>
+
+      <form action="/login" method="POST">
+        <label>
+          <span>Email Address</span>
+          <input type="email" name="email">
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" name="password">
+        </label>
+        <button type="submit" style="margin-top: 16px;" name="sign-in"> Sign In</button>
+        <hr style="margin-top: 21px;">
+        <p class="forgot-pass">Forgot Password ?</p>
+
+        <div id="signin_flash_messages">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category,msg in messages %}
+          <span id="alert-{{ category }}" style="margin-top:20px;">{{msg}}</span>
+          <span aria-hidden="true" style="margin-left:10px;cursor: pointer;font-size: 24px;margin-top:20px;"
+            onclick="alert_close()"><b>&times;</b></span>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="sub-cont">
+      <div class="img">
+        <div class="img-text m-up" style="margin-top:65%;">
+          <h2>New here?</h2>
+          <p>Sign up and discover great amount of new opportunities!</p>
+        </div>
+        <div class="img-text m-in" style="margin-top: 0;">
+          <h2>One of us?</h2>
+          <p>Just sign in!</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</a></span>
+          <span class="m-in">Sign In</a></span>
+        </div>
+      </div>
+
+
+      <div class="form sign-up">
+        <h2>Sign Up</h2>
+
+        <form onsubmit="pass(this)" name='user_form' method="POST">
+          <label>
+            <span>Full Name</span>
+            <input type="text" name="name">
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email">
+          </label>
+          <label>
+            <span>Password</span>
+            <input type="password" name="password1" id='pass1'>
+          </label>
+          <label>
+            <span>Confirm Password</span>
+            <input type="password" name="password2" id='pass2' onkeyup="pass();">
+          </label>
+          <label id="password-check"></label>
+          <button type="submit" class="" name="sign-up">Sign Up</button>
+
+          <div id="signup_flash_messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category,msg in messages %}
+            <span id="alert-{{ category }}" style="margin-top:0px;">{{msg}}</span>
+            <span aria-hidden="true" style="margin-left:10px;cursor: pointer;font-size: 24px;"
+              onclick="alert_close()"><b>&times;</b></span>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+  <script defer src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+
+</html>

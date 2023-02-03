@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="/static/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+
+
+  <style>
+    .dash-circle {
+      color: aliceblue;
+      text-align: center;
+    }
+
+    .dash-head {
+      color: aliceblue;
+      padding: 20px;
+      margin-left: 45%;
+    }
+
+    body {
+      /* border-color: rgb(255, 255, 255); */
+
+      background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg">
+    <div class="nav1">
+      <input type="checkbox" id="nav1-check">
+      <div class="nav1-header">
+        <div class="nav1-title">
+          <img class="wipro-logo" src="/static/Wipro-logo.png" alt="wipro-logo">
+        </div>
+      </div>
+      <div class="nav1-btn">
+        <label for="nav1-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav1-links">
+        <img src="/static/gcp_icon.svg" alt="gcp-icon">
+        <a href="/" target="_blank">Home</a>
+        <a href="/logout" target="_blank">Logout</a>
+      </div>
+    </div>
+
+
+    <div class="dash-main">
+      <div class="bg">
+        <div class="navbar">
+          <h1 class="dash-head text-center">Dashboard</h1>
+        </div>
+
+        <div class="dash-circle">
+          <table class="table container table-dark table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>S. No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th colspan="10">Score</th>
+            </thead>
+            <tbody>
+              {% for row in zip(q['Name'].values(),q['Email'].values(),q['score'].values()) %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                {% for r in row[2] %}
+                <td>
+                  {% if r> -1 %}
+                  {{r}}
+                  {% endif%}
+                  {% if r >=100 %}
+                  <p style="color: rgb(10, 207, 10);">&nbsp (Pass)</p>
+                  {% elif r < 0 %} <p style="color: rgb(89, 0, 255);">&nbsp </p>
+                    {% else %}
+                    <p style="color: red;">&nbsp (Fail)</p>
+                    {% endif %}
+                </td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+
+</body>
+
+</html>

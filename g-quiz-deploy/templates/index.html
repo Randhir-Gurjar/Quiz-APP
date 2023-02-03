@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+
+</head>
+<style>
+  .bg {
+
+    background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+  }
+</style>
+
+<body>
+  <div class="bg">
+    <div class="nav1">
+      <input type="checkbox" id="nav1-check">
+      <div class="nav1-header">
+        <div class="nav1-title">
+          <img class="wipro-logo" src="static/Wipro-logo.png" alt="wipro-logo">
+        </div>
+      </div>
+      <div class="nav1-btn">
+        <label for="nav1-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav1-links">
+        <img src="/gcp_icon.svg" alt="gcp-icon">
+        <a href="/">Home</a>
+        <a href="./adminlogin">Admin Login</a>
+        <a href="./login">User Login/Sign Up</a>
+      </div>
+    </div>
+
+
+    <div style="position: absolute; top: 40%; right: 20% ; left:20% ; color:#f1f1e5; text-align: center; ">
+      <h2 style="text-align: center;">Want to know the latest from Google Cloud? Find it here in one handy location.
+      </h2>
+      <a href="./login"> <button type="button" class="quiz-btn">Take The Quiz</button> </a>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>

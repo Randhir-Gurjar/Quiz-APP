@@ -1,0 +1,11 @@
+pandas
+numpy
+flask
+gunicorn
+flask_login
+python-dotenv
+bcrypt
+deta
+pillow 
+openpyxl
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+
+  <style>
+    body {
+      background-image: url("/static/quiz.png");
+      display: inline-block;
+    }
+
+    .admincont {
+      margin: 77px auto;
+
+    }
+  </style>
+
+<body>
+
+  <div class="nav1">
+    <input type="checkbox" id="nav1-check">
+    <div class="nav1-header">
+      <div class="nav1-title">
+        <img class="wipro-logo" src="static/Wipro-logo.png" alt="wipro-logo">
+      </div>
+    </div>
+    <div class="nav1-btn">
+      <label for="nav1-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav1-links">
+      <img src="/gcp_icon.svg" alt="gcp-icon">
+      <a href="/">Home</a>
+      <a href="./login">User Login/Sign Up</a>
+    </div>
+  </div>
+
+
+
+  <div class="admincont" style="text-align: center;">
+
+    <!-- <div class="admin-sign-in sign-in"> -->
+    <img style="
+      margin-top: 40px;
+      padding-bottom: 9px;" src="static/Wipro-logo.png" , width="100" height="65" ,alt="logo">
+    <h2>Sign In</h2>
+    <form action="/adminlogin" method="POST">
+      <label>
+        <span>Email Address</span>
+        <input type="email" name="email">
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password">
+      </label>
+
+      <button type="submit" style="margin-top: 16px;" name="sign-in"> Sign In</button>
+      <p class="forgot-pass">Forgot Password ?</p>
+      <div id="signin_flash_messages">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,msg in messages %}
+        <span id="alert-{{ category }}" style="margin-top:20px;">{{msg}}</span>
+        <span aria-hidden="true" style="margin-left:10px;cursor: pointer;font-size: 24px;margin-top:20px;"
+          onclick="alert_close()"><b>&times;</b></span>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+    </form>
+    <!-- </div> -->
+  </div>
+
+
+  <script src="{{url_for('static', filename='script.js')}}"></script>
+
+</body>
+
+</html>

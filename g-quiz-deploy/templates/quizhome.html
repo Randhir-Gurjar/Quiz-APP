@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <script src="/static/bootstrap.min.js"></script>
+
+  <style>
+    body,
+
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .bg {
+
+      background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/static/home.jpeg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      background-attachment: fixed;
+      font-weight: bold;
+    }
+
+
+    .nav1bar-toggler:hover {
+      /* border:solid rgb(187, 132, 21); */
+      background-color: rgb(187, 132, 21);
+      -webkit-transition: background-color 0.8s, color 0.8s;
+      transition: background-color 0.8s, color 0.8s;
+    }
+
+    .quiz-btn:hover {
+      background-color: rgb(126, 75, 197);
+      -webkit-transition: background-color 0.5s, color 0.5s;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+
+
+    .quiz-box {
+      position: relative;
+      top: 10%;
+      margin-bottom: 20px;
+      padding: 10px;
+
+    }
+
+    .lock-img {
+      height: 134px;
+      width: 202px;
+      border-radius: 61px;
+    }
+
+    .box {
+      margin-top: 30px;
+
+    }
+
+    .card {
+      border-radius: 60px;
+      box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(114, 62, 62),
+        0.3em 0.3em 1em rgba(211, 185, 185, 0.3);
+    }
+
+    .btp {
+      background-color: rgb(196, 104, 6);
+      border-radius: 11px;
+      margin: 10px;
+    }
+
+    .btp:hover {
+      background-color: rgb(126, 75, 197);
+      -webkit-transition: background-color 0.5s, color 0.5s;
+      transition: background-color 0.5s, color 0.5s;
+      font-weight: bolder;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="bg">
+
+    <div class="bg">
+      <div class="nav1">
+        <input type="checkbox" id="nav1-check">
+        <div class="nav1-header">
+          <div class="nav1-title">
+            <img class="wipro-logo" src="/static/Wipro-logo.png" alt="wipro-logo">
+          </div>
+        </div>
+        <div class="nav1-btn">
+          <label for="nav1-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav1-links">
+          <img src="/static/gcp_icon.svg" alt="gcp-icon">
+          <a href="/" target="_blank">Home</a>
+          <a href="/logout" target="_blank">Logout</a>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="container quiz-box">
+
+        <div class="row ">
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success  text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+
+                <a href="/quiz-start1/1/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 1 </button>
+                </a>
+                {% if sc[0] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[0]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {%else%}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success  text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[0] >= 100 %}
+                <a href="/quiz-start1/16/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 2</button>
+                </a>
+
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 2</button>
+                </a>
+
+                {% endif %}
+
+                {% if sc[1] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[1]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[1] >= 100 %}
+                <a href="/quiz-start1/31/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 3</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 3</button>
+                </a>
+
+                {% endif %}
+                {% if sc[2] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[2]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[2] >= 100 %}
+                <a href="/quiz-start1/46/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 4</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 4</button>
+                </a>
+                {% endif %}
+                {% if sc[3] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[3]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[3] >= 100 %}
+                <a href="/quiz-start1/61/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 5</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 5</button>
+                </a>
+
+                {% endif %}
+                {% if sc[4] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[4]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[4] >=100 %}
+                <a href="/quiz-start1/76/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 6</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 6</button>
+                </a>
+                {% endif %}
+                {% if sc[5] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[5]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[5] >=100 %}
+                <a href="/quiz-start1/91/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz-7</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 7</button>
+                </a>
+                {% endif %}
+                {% if sc[6] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[6]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[6] >=100 %}
+                <a href="/quiz-start1/106/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 8</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 8</button>
+                </a>
+                {% endif %}
+                {% if sc[7] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[7]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(120, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[7] >=100 %}
+                <a href="/quiz-start1/121/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 9</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 9</button>
+                </a>
+                {% endif %}
+                {% if sc[8] >= 100 %}
+                <h5 style="color: green;"><br>Pass</h5>
+                {%elif sc[8]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(106, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 box col-md-4 col-sm-6">
+            <div class="card border-success   text-dark bg-warning" style="max-width: 15rem;">
+              <div class="card-body text-success text-center">
+                {% if sc[8] >= 100 %}
+                <a href="/quiz-start1/136/0">
+                  <button type="button" class="btn btn-outline-dark ">Quiz 10</button>
+                </a>
+                {% else %}
+                <a>
+                  <button type="button" class="btn btn-outline-dark ">Quiz 10</button>
+                </a>
+                {% endif %}
+
+                {% if sc[9] >= 100 %}
+
+                <button type="button" class="btp">
+                  <a href="/static/certificates/" style="text-decoration: none; color: aliceblue;">Click here to
+                    get Certificate</a>
+                </button>
+
+                {%elif sc[9]==-1%}
+                <h5 style="color:rgb(15, 91, 67);"><br>Yet to Attempt</h5>
+                {% else %}
+                <h5 style="color: rgb(106, 4, 4);"><br>Try Again</h5>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

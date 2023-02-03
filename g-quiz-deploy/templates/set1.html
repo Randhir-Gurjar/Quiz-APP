@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+</head>
+<style>
+    .bg {
+
+        background-image: -webkit-linear-gradient(rgba(213, 204, 204, 0.9), rgba(219, 213, 213, 0.9)), url("/static/ques.jpeg");
+        background-image: linear-gradient(rgba(213, 206, 206, 0.9), rgba(224, 217, 217, 0.9)), url("/static/ques.jpeg");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        background-attachment: fixed;
+    }
+
+
+    .ques-heading {
+        font-size: large;
+        float: right;
+        width: 90%;
+    }
+
+    .ques-div {
+        text-align: left;
+        border: 2px solid cyan;
+        background-color: antiquewhite;
+        padding: 10px;
+        border-radius: 13px;
+    }
+
+    .ques-no {
+        font-size: large;
+        font-weight: bold;
+        float: left;
+        width: 8%;
+    }
+</style>
+
+<body class="bg">
+
+    <div class="" style="position: absolute; top: 10%; left:10% ; right: 10%;">
+        <form method="post">
+            <div class="dotted-spaced form-group"></div>
+            <div class="ques-div">
+                <p class="ques-no"> Question:</p>
+                <p class="ques-heading"> {{ qset[1] }}</p>
+                <br style="clear: both;">
+            </div>
+
+            <div class="options-div form-check" style="font-weight: bold;"><br>
+                {%for qid,opt in range(qset[2]|length)|zip(qset[2])%}
+                <input type="radio" class="form-control form-check-input" style=" padding-left: 3px;" name="opt"
+                    id="opt{{qid}}" value="{{qid}}" required>&nbsp;&nbsp;
+                <label for="opt{{qid}}" class="form-check-label"
+                    style="position: absolute;right:auto; top: auto; ">{{opt}}</label><br><br><br>
+                {%endfor%}
+            </div>
+
+            <button type="submit" name="next" value="next" class="btn btn-primary"
+                style="margin-top: 20px;">Next</button>
+        </form>
+
+    </div>
+    <script>
+        function goBack() {
+            window.history.forward();
+        }
+        setTimeout("goBack()", 0);
+        window.onunload = function () { null }
+
+    </script>
+
+</body>
+
+</html>
