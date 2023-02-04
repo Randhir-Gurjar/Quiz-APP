@@ -128,7 +128,6 @@ def al():
         submit_btn = list(request.form)
 
 # ************************************************************************************** Admin sign_in ********************************************************************
-        print(submit_btn)
         if submit_btn[2] == 'sign-in':
             admin_mail = request.form["email"]
             admin_pas = request.form['password']
@@ -153,7 +152,6 @@ def quiz():
     if g.user:
         try:
             if(lscore[8]>=100):
-                print("jhaat")
                 certificate_gen()
             return render_template('quizhome.html', sc=lscore)
         except Exception as e:
@@ -170,7 +168,6 @@ def questions(id, qno):
     global score
     global lscore
     global r_list
-    print("lscore inside quiz-start", lscore)
     if g.user:
         if flag:
             user_answer = {'0': 'A', '1': 'B', '2': 'C', '3': 'D'}
@@ -282,8 +279,7 @@ def certificate_gen():
         font_path,
         120
     )
-    _, _ = draw.textsize(name, font=font)
-
+    
     draw.text((790, 660),
               name, (0, 0, 0),
               font=font, align='right')
