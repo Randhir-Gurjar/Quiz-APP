@@ -152,6 +152,9 @@ def al():
 def quiz():
     if g.user:
         try:
+            if(lscore[8]>=100):
+                print("jhaat")
+                certificate_gen()
             return render_template('quizhome.html', sc=lscore)
         except Exception as e:
             print(e)
@@ -268,24 +271,31 @@ def dashboard():
         return redirect("/error")
 
 
+def certificate_gen():
+
+    name = userLogged['Name']
+    font_path = "static/The Beauty Blink TTF.ttf"
+    certificate = "static/certificate.png"
+    img = Image.open(certificate, mode='r')
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype(
+        font_path,
+        120
+    )
+    _, _ = draw.textsize(name, font=font)
+
+    draw.text((790, 660),
+              name, (0, 0, 0),
+              font=font, align='right')
+    img.save("static/certificates/{}.png".format(name))
+   
+
+
+
 @app.route('/static/certificates/')
 def coupons():
     try:
         name = userLogged['Name']
-        font_path = "static/The Beauty Blink TTF.ttf"
-        certificate = "static/certificate.png"
-        img = Image.open(certificate, mode='r')
-        draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype(
-            font_path,
-            120
-        )
-        _, _ = draw.textsize(name, font=font)
-
-        draw.text((790, 660),
-                  name, (0, 0, 0),
-                  font=font, align='right')
-        img.save("static/certificates/{}.png".format(name))
         return render_template('cert.html', n="{}.png".format(name))
     except Exception as e:
         print(e)
