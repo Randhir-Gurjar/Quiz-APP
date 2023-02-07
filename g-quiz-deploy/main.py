@@ -8,10 +8,9 @@ from datetime import timedelta
 from deta import Deta
 import pandas as pd
 import numpy as np
-
 import random
 import ssl
-
+import os
 
 ssl._create_default_https_context = ssl._create_unverified_context
 load_dotenv()
@@ -151,7 +150,8 @@ def al():
 def quiz():
     if g.user:
         try:
-            if(lscore[8]>=100):
+            name = userLogged['Name']
+            if lscore[8]>=100 and not os.path.exists(f"static/certificates/{name}.png"):
                 certificate_gen()
             return render_template('quizhome.html', sc=lscore)
         except Exception as e:
